@@ -1,0 +1,4 @@
+if count(g:spf13_bundle_groups, 'clojure')
+    Bundle 'vim-scripts/VimClojure'
+endif
+

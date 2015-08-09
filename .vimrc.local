@@ -1,0 +1,6 @@
+let g:spf13_no_views = 1
+let NERDTreeQuitOnOpen=0
+let NERDTreeWinSize=31
+set noea
+set shortmess=atI
+iunmap <Esc>
