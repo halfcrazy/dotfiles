@@ -62,11 +62,13 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='mvim'
- fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -85,6 +87,9 @@ source $ZSH/oh-my-zsh.sh
 alias -g cls="clear"
 alias -g vi="vim"
 alias -g agp="ag --python"
+alias -g pgp="proxychains4 git pull"
+alias -g pubpac="./scripts/pub_pac.sh"
+alias -g pripac="./scripts/pri_pac.sh"
 
 # boot2docker config
 export DOCKER_HOST=tcp://192.168.59.103:2376
