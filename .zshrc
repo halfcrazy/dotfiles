@@ -88,8 +88,8 @@ alias -g cls="clear"
 alias -g vi="vim"
 alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
-alias -g pubpac="./scripts/pub_pac.sh"
-alias -g pripac="./scripts/pri_pac.sh"
+alias -g pubpac="sh ~/scripts/pub_pac.sh"
+alias -g pripac="sh ~/scripts/pri_pac.sh"
 
 # boot2docker config
 export DOCKER_HOST=tcp://192.168.59.103:2376
