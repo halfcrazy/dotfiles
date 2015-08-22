@@ -12,3 +12,5 @@
 	st = status
 	unstage = reset HEAD --
 	last = log -1 HEAD
+	pro = pull --rebase origin
+	pru = pull --rebase upstream
