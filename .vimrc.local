@@ -1,5 +1,3 @@
-let NERDTreeQuitOnOpen=0
-let NERDTreeWinSize=31
 set noea
 set shortmess=atI
 set foldlevel=1

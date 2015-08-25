@@ -7,3 +7,5 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#bufferline#enabled = 0
 let g:airline_theme='dark'
 let g:tagbar_width=35
+let g:NERDTreeQuitOnOpen=0
+let g:NERDTreeWinSize=25
