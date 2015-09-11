@@ -15,3 +15,7 @@
 	pro = pull --rebase origin
 	pru = pull --rebase upstream
 	getsub = submodule update --init --recursive
+[pull]
+	default = current
+[push]
+	default = current
