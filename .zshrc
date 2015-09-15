@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, osx, tmux, autojump)
+plugins=(git, osx, brew, brew-cask, tmux, autojump)
 
 # User configuration
 
@@ -91,9 +91,5 @@ alias -g pgp="proxychains4 git pull"
 alias -g pubpac="sh ~/scripts/pub_pac.sh"
 alias -g pripac="sh ~/scripts/pri_pac.sh"
 
-# boot2docker config
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/eleme/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
+export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
