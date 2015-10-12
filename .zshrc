@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, osx, brew, brew-cask, tmux, autojump)
+plugins=(git, osx, brew, brew-cask, tmux, virtualenvwrapper, autojump)
 
 # User configuration
 
@@ -92,4 +92,5 @@ alias -g pubpac="sh ~/scripts/pub_pac.sh"
 alias -g pripac="sh ~/scripts/pri_pac.sh"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
+export WORKON_HOME=/srv/virtualenv
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
