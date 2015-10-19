@@ -5,6 +5,7 @@ automake
 boost
 boot-clj
 brew-cask
+cmake
 cpanminus
 cscope
 ctags
@@ -18,6 +19,7 @@ gdbm
 git
 git-extras
 git-flow
+gradle
 graphviz
 htop-osx
 httpie
@@ -38,6 +40,7 @@ lua
 luajit
 mackup
 macvim
+maven
 mongodb
 mtr
 mysql
@@ -52,6 +55,7 @@ proxychains-ng
 python
 rabbitmq
 readline
+rebar
 redis
 sqitch
 sqitch_dependencies
