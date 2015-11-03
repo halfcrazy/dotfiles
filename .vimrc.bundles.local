@@ -3,3 +3,6 @@ if count(g:spf13_bundle_groups, 'clojure')
     Bundle 'tpope/vim-fireplace'
 endif
 
+if count(g:spf13_bundle_groups, 'thrift')
+    Bundle 'solarnz/thrift.vim'
+endif
