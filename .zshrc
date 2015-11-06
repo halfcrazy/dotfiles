@@ -88,6 +88,7 @@ alias -g cls="clear"
 alias -g vi="vim"
 alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
+alias -g pycclean="find . -name '*.pyc' -delete"
 alias -g pubpac="sh ~/scripts/pub_pac.sh"
 alias -g pripac="sh ~/scripts/pri_pac.sh"
 
