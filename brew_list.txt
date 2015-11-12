@@ -5,6 +5,7 @@ automake
 boost
 boot-clj
 brew-cask
+cloc
 cmake
 cpanminus
 cscope
