@@ -1,6 +1,5 @@
 android-sdk
 autoconf
-autojump
 automake
 boost
 boot-clj
@@ -75,4 +74,5 @@ wget
 wxmac
 xcproj
 xz
+z
 zsh
