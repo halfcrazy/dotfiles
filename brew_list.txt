@@ -62,6 +62,7 @@ sqitch
 sqitch_dependencies
 sqitch_mysql
 sqlite
+ssh-copy-id
 tesseract
 the_silver_searcher
 tig
