@@ -85,6 +85,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g cls="clear"
+alias -g tmux="tmux -2"
 alias -g vi="vim"
 alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
