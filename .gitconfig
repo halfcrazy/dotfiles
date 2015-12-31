@@ -11,6 +11,7 @@
 	ci = commit
 	st = status
 	unstage = reset HEAD --
+	uncommit = reset --soft HEAD~
 	last = log -1 HEAD
 	pro = pull --rebase origin
 	pru = pull --rebase upstream
