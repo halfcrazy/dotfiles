@@ -91,8 +91,8 @@ alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
 alias -g pycclean="find . -name '*.pyc' -delete"
 alias -g prettyjson="python -m json.tool"
-alias -g pubpac="sh ~/scripts/pub_pac.sh"
-alias -g pripac="sh ~/scripts/pri_pac.sh"
+alias -g vimupdate="vim +BundleInstall! +BundleClean +q"
+alias -g ubuntuupdate="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export WORKON_HOME=/srv/virtualenv
