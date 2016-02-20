@@ -93,6 +93,7 @@ alias -g pycclean="find . -name '*.pyc' -delete"
 alias -g prettyjson="python -m json.tool"
 alias -g vimupdate="vim +BundleInstall! +BundleClean +q"
 alias -g ubuntuupdate="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove && sudo apt-get autoclean"
+alias -g weather="curl -4 wttr.in"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export WORKON_HOME=/srv/virtualenv
