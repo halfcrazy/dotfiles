@@ -6,3 +6,12 @@ endif
 if count(g:spf13_bundle_groups, 'thrift')
     Bundle 'solarnz/thrift.vim'
 endif
+
+if count(g:spf13_bundle_groups, 'codereview')
+    Bundle 'junkblocker/patchreview-vim'
+    Bundle 'codegram/vim-codereview'
+endif
+
+if count(g:spf13_bundle_groups, 'wiki')
+    Bundle 'vimwiki/vimwiki'
+endif
