@@ -95,6 +95,8 @@ alias -g vimupdate="vim +BundleInstall! +BundleClean +q"
 alias -g ubuntuupdate="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean"
 alias -g record="asciinema rec"
 alias -g weather="curl -4 wttr.in"
+alias -g workon="pyenv activate "
+alias -g deactivate="pyenv deactivate"
 
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
