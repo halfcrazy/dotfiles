@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/eleme/.oh-my-zsh
+export ZSH=/home/halfcrazy/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -85,7 +85,6 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g cls="clear"
-alias -g tmux="tmux -2"
 alias -g vi="vim"
 alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
@@ -97,6 +96,12 @@ alias -g record="asciinema rec"
 alias -g weather="curl -4 wttr.in"
 alias -g workon="pyenv activate "
 alias -g deactivate="pyenv deactivate"
+alias -g dockerclean="docker rm $(docker ps -aq) && docker rmi $(docker images -q --filter dangling=true)"
 
-export ANDROID_HOME=/usr/local/opt/android-sdk
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="/home/halfcrazy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
