@@ -86,6 +86,7 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias -g cls="clear"
 alias -g vi="vim"
+alias emacs="emacsclient -nw"
 alias -g agp="ag --python"
 alias -g pgp="proxychains4 git pull"
 alias -g pycclean="find . -name '*.pyc' -delete"

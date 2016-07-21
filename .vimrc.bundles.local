@@ -15,3 +15,9 @@ endif
 if count(g:spf13_bundle_groups, 'wiki')
     Bundle 'vimwiki/vimwiki'
 endif
+
+if count(g:spf13_bundle_groups, 'other')
+    Bundle 'evanmiller/nginx-vim-syntax'
+    Bundle 'editorconfig/editorconfig-vim'
+    Bundle 'ianva/vim-youdao-translater'
+endif

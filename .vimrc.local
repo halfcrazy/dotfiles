@@ -2,6 +2,12 @@ set noea
 set shortmess=atI
 set foldlevel=1
 "iunmap <Esc>
+
+"youdao translater
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd : <C-u> Yde<CR>
+
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeWinSize=25
 
