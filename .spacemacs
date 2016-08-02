@@ -25,10 +25,14 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
+     deft
      emacs-lisp
      git
+     chinese
+     (chinese :variables
+              chinese-enable-youdao-dict t)
      markdown
-     org
+     osx
      (org :variables
           org-enable-github-support t)
      ;; (shell :variables
@@ -38,14 +42,17 @@ values."
      syntax-checking
      version-control
      clojure
+     go
      lua
      python
      rust
      shell
      html
+     yaml
      javascript
-     dash
-     dockerfile
+     ;;dash
+     docker
+     nginx
      tmux
      )
    ;; List of additional packages that will be installed without being
@@ -252,6 +259,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+(setq configuration-layer--elpa-archives
+  '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+    ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+    ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -263,7 +274,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 (global-linum-mode)
 (evil-ex-define-cmd "Q" 'evil-quit)
+(evil-ex-define-cmd "E" 'evil-edit)
 (evil-ex-define-cmd "W" 'evil-write)
+(spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+(setq go-tab-width 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
