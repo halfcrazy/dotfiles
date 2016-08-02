@@ -1,4 +1,6 @@
-dropbox
-vagrant
-vagrant-manager
-virtualbox
+google-chrome
+iterm2
+java
+moom
+sourcetree
+teamviewer
