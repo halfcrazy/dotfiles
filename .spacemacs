@@ -28,7 +28,8 @@ values."
      deft
      emacs-lisp
      git
-     chinese
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
      (chinese :variables
               chinese-enable-youdao-dict t)
      markdown
