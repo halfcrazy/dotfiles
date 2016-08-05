@@ -1,3 +1,4 @@
+font-source-code-pro
 google-chrome
 iterm2
 java
