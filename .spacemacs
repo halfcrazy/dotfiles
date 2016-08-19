@@ -273,14 +273,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-(setq-default dotspacemacs-persistent-server t)
+;;(setq-default dotspacemacs-persistent-server t)
 (global-linum-mode)
 (setq dotspacemacs-distinguish-gui-tab t)
+(setq go-tab-width 4)
+(setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
 (evil-ex-define-cmd "Q" 'evil-quit)
 (evil-ex-define-cmd "E" 'evil-edit)
 (evil-ex-define-cmd "W" 'evil-write)
 (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
-(setq go-tab-width 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
