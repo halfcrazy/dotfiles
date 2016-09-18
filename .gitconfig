@@ -1,9 +1,9 @@
 [user]
-	name = yan.zhu
-	email = yan.zhush@ele.me
+	name = zhuyan
+	email = zhuyan-s@360.cn
 [core]
 	editor = vim
-	excludesfile = /Users/eleme/.gitignore_global
+	excludesfile = /Users/halfcrazy/.gitignore_global
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	co = checkout
@@ -20,3 +20,5 @@
 	default = current
 [push]
 	default = current
+[commit]
+	template = /Users/halfcrazy/.git_commit_msg.txt

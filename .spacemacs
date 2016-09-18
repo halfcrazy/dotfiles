@@ -23,8 +23,13 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t)
      better-defaults
+     (imenu-list :variables
+                 imenu-list-size 0.2)
+     semantic
+     gtags
      deft
      emacs-lisp
      git
@@ -42,6 +47,9 @@ values."
      ;; spell-checking
      syntax-checking
      version-control
+     (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-clang-support t)
      clojure
      go
      lua
@@ -51,10 +59,12 @@ values."
      html
      yaml
      javascript
-     ;;dash
+     dash
+     ansible
      docker
      nginx
      tmux
+     fasd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -278,9 +288,25 @@ you should place your code here."
 (setq dotspacemacs-distinguish-gui-tab t)
 (setq go-tab-width 4)
 (setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
+(setq imenu-list-auto-resize nil)
+(add-to-list 'dash-at-point-mode-alist '(lua-mode . "openresty,lua"))
+(add-to-list 'dash-at-point-mode-alist '(nginx-mode . "openresty,nginx"))
+(setq lua-indent-level 4)
+(spacemacs|add-company-hook lua-mode)
+(with-eval-after-load 'lua-mode
+  (spacemacs|defvar-company-backends lua-mode)
+  (require 'company-keywords)
+  (push '(lua-mode  "setmetatable" "local" "function" "and" "break" "do" "else" "elseif" "self" "resume" "yield"
+                    "end" "false" "for" "function" "goto" "if" "nil" "not" "or" "repeat" "return" "then" "true"
+                    "until" "while" "__index" "__newindex" "dofile" "getmetatable" "ipairs" "pairs" "print"
+                    "rawget" "status" "rawset" "select" "_M" "_G" "assert" "collectgarbage" "error" "pcall"
+                    "coroutine" "rawequal" "require" "load" "tostring" "tonumber" "xpcall" "gmatch" "gsub"
+                    "rep" "reverse" "sub" "upper" "concat" "pack" "insert" "remove" "unpack" "sort"
+                    "lower") company-keywords-alist))
 (evil-ex-define-cmd "Q" 'evil-quit)
 (evil-ex-define-cmd "E" 'evil-edit)
 (evil-ex-define-cmd "W" 'evil-write)
+(evil-ex-define-cmd "Wq" 'evil-save-and-quit)
 (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
   )
 
