@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/halfcrazy/.oh-my-zsh
+export ZSH=/Users/halfcrazy/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -35,7 +35,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -49,17 +49,18 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker osx brew tmux pyenv z)
+plugins=(brew pyenv fasd)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -67,7 +68,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-
 export EDITOR='vim'
 
 # Compilation flags
@@ -84,26 +84,41 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias -g cls="clear"
-alias -g vi="vim"
-alias emacsc="emacsclient -nw"
-alias emacss="emacs --daemon --with-x-toolkit=lucid -nw"
-alias -g agp="ag --python"
-alias -g pgp="proxychains4 git pull"
-alias -g pycclean="find . -name '*.pyc' -delete"
-alias -g prettyjson="python -m json.tool"
-alias -g vimupdate="vim +BundleInstall! +BundleClean +q"
-alias -g ubuntuupdate="sudo apt-get update && sudo apt-get -y upgrade && sudo apt-get -y autoremove && sudo apt-get -y autoclean"
-alias -g record="asciinema rec"
-alias -g weather="curl -4 wttr.in"
-alias -g workon="pyenv activate "
-alias -g deactivate="pyenv deactivate"
-alias -g dockerclean="docker rm $(docker ps -aq) && docker rmi $(docker images -q --filter dangling=true)"
+ alias vi="vim"
+ alias vimupdate="vim +BundleInstall! +BundleClean +q"
+ alias esc="emacsclient -t "
+ alias esg="emacsclient -c "
+ alias workon="pyenv activate "
+ alias deactive="source deactivate"
+ alias pycclean="find . -name '*.pyc' -delete"
+ alias cspace="sed -i '' -e's/[[:space:]]*$//' "
 
+ alias a='fasd -a'        # any
+ alias s='fasd -si'       # show / search / select
+ alias d='fasd -d'        # directory
+ alias f='fasd -f'        # file
+ alias sd='fasd -sid'     # interactive directory selection
+ alias sf='fasd -sif'     # interactive file selection
+ alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+ alias zz='fasd_cd -d -i' # cd with interactive selection
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:/usr/local/openresty/nginx/sbin/:/usr/local/openresty/bin/:/usr/local/openresty/luajit/bin/:/Users/halfcrazy/.go/bin/
+#export GOPATH=/Users/halfcrazy/.go
+export GOPATH=/Users/halfcrazy/workspace/go
 
-export NVM_DIR="/home/halfcrazy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
+
+#. "$(brew --prefix nvm)/nvm.sh"
+source /usr/local/opt/nvm/nvm.sh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+PATH="/Users/halfcrazy/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/halfcrazy/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/halfcrazy/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/halfcrazy/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/halfcrazy/perl5"; export PERL_MM_OPT;
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
