@@ -17,12 +17,10 @@ coreutils
 ctags
 dbus
 editorconfig
-elasticsearch
 emacs-plus
 entr
 erlang
 fasd
-filebeat
 fontconfig
 freetype
 fzf
@@ -52,7 +50,6 @@ imagemagick
 isl011
 jemalloc
 jpeg
-kibana
 leiningen
 libcroco
 libepoxy
@@ -73,7 +70,6 @@ libxml2
 libxslt
 libyaml
 lnav
-logstash
 lua
 mackup
 mas

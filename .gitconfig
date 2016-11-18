@@ -1,9 +1,10 @@
 [user]
 	name = zhuyan
-	email = zhuyan-s@360.cn
+	email = zhuyan@b.360.cn
 [core]
 	editor = vim
 	excludesfile = /Users/halfcrazy/.gitignore_global
+	symlinks = false
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	co = checkout

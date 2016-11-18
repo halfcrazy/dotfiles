@@ -8,10 +8,12 @@ iterm2
 java
 kitematic
 licecap
+macvim
 medis
 moom
 osxfuse
 psequel
+pycharm-ce
 rdm
 rescuetime
 sourcetree
@@ -22,5 +24,6 @@ vagrant
 virtualbox
 visual-studio-code
 vlc
+vmware-fusion
 vox
 wireshark
