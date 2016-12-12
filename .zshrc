@@ -89,9 +89,11 @@ export EDITOR='vim'
  alias esc="emacsclient -t "
  alias esg="emacsclient -c "
  alias workon="pyenv activate "
- alias deactive="source deactivate"
+ alias nowork="pyenv deactivate"
  alias pycclean="find . -name '*.pyc' -delete"
  alias cspace="sed -i '' -e's/[[:space:]]*$//' "
+
+ alias 。。=".."
 
  alias a='fasd -a'        # any
  alias s='fasd -si'       # show / search / select
