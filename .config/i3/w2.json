@@ -1,0 +1,22 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 633,
+       "width": 746,
+       "x": 0,
+       "y": 0
+    },
+    "name": "Emacs",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "Emacs25",
+        "instance": "^emacs$"
+       }
+    ],
+    "type": "con"
+}
+

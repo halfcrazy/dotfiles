@@ -1,0 +1,22 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 880,
+       "width": 854,
+       "x": 860,
+       "y": 46
+    },
+    "name": "Chromium",
+    "percent": 1,
+    "swallows": [
+       {
+        "class": "^Chromium\\-browser$",
+        "instance": "^chromium\\-browser$"
+       }
+    ],
+    "type": "con"
+}
+
