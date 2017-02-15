@@ -236,7 +236,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -284,9 +284,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 ;;(setq-default dotspacemacs-persistent-server t)
-(global-linum-mode)
 (setq dotspacemacs-distinguish-gui-tab t)
-(setq go-tab-width 4)
 (setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
 (setq imenu-list-auto-resize nil)
 (add-to-list 'dash-at-point-mode-alist '(lua-mode . "openresty,lua"))
