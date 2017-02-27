@@ -70,7 +70,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -112,7 +112,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -218,7 +218,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -260,7 +260,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ))
 
 (defun dotspacemacs/user-init ()
@@ -270,6 +270,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq tramp-default-method "ssh")
+  (setq tramp-copy-size-limit nil)
 (setq configuration-layer--elpa-archives
   '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
     ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
@@ -283,29 +285,38 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-;;(setq-default dotspacemacs-persistent-server t)
-(setq dotspacemacs-distinguish-gui-tab t)
-(setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
-(setq imenu-list-auto-resize nil)
-(add-to-list 'dash-at-point-mode-alist '(lua-mode . "openresty,lua"))
-(add-to-list 'dash-at-point-mode-alist '(nginx-mode . "openresty,nginx"))
-(setq lua-indent-level 4)
-(spacemacs|add-company-hook lua-mode)
-(with-eval-after-load 'lua-mode
-  (spacemacs|defvar-company-backends lua-mode)
-  (require 'company-keywords)
-  (push '(lua-mode  "setmetatable" "local" "function" "and" "break" "do" "else" "elseif" "self" "resume" "yield"
-                    "end" "false" "for" "function" "goto" "if" "nil" "not" "or" "repeat" "return" "then" "true"
-                    "until" "while" "__index" "__newindex" "dofile" "getmetatable" "ipairs" "pairs" "print"
-                    "rawget" "status" "rawset" "select" "_M" "_G" "assert" "collectgarbage" "error" "pcall"
-                    "coroutine" "rawequal" "require" "load" "tostring" "tonumber" "xpcall" "gmatch" "gsub"
-                    "rep" "reverse" "sub" "upper" "concat" "pack" "insert" "remove" "unpack" "sort"
-                    "lower") company-keywords-alist))
-(evil-ex-define-cmd "Q" 'evil-quit)
-(evil-ex-define-cmd "E" 'evil-edit)
-(evil-ex-define-cmd "W" 'evil-write)
-(evil-ex-define-cmd "Wq" 'evil-save-and-quit)
-(spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+  ;;(setq-default dotspacemacs-persistent-server t)
+  (global-hl-line-mode)
+  (editorconfig-mode 1)
+  (setq dotspacemacs-distinguish-gui-tab t)
+  (setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
+  (setq imenu-list-auto-resize nil)
+  (add-to-list 'dash-at-point-mode-alist '(lua-mode . "openresty,lua"))
+  (add-to-list 'dash-at-point-mode-alist '(nginx-mode . "openresty,nginx"))
+  (setq lua-indent-level 4)
+  (spacemacs|add-company-hook lua-mode)
+  (with-eval-after-load 'lua-mode
+    (spacemacs|defvar-company-backends lua-mode)
+    (require 'company-keywords)
+    (push '(lua-mode  "setmetatable" "local" "function" "and" "break" "do" "else" "elseif" "self" "resume" "yield"
+                      "end" "false" "for" "function" "goto" "if" "nil" "not" "or" "repeat" "return" "then" "true"
+                      "until" "while" "__index" "__newindex" "dofile" "getmetatable" "ipairs" "pairs" "print"
+                      "rawget" "status" "rawset" "select" "_M" "_G" "assert" "collectgarbage" "error" "pcall"
+                      "coroutine" "rawequal" "require" "load" "tostring" "tonumber" "xpcall" "gmatch" "gsub"
+                      "rep" "reverse" "sub" "upper" "concat" "pack" "insert" "remove" "unpack" "sort"
+                      "lower") company-keywords-alist))
+  (evil-ex-define-cmd "Q" 'evil-quit)
+  (evil-ex-define-cmd "E" 'evil-edit)
+  (evil-ex-define-cmd "W" 'evil-write)
+  (evil-ex-define-cmd "Wq" 'evil-save-and-quit)
+  (spacemacs/set-leader-keys "oy" 'youdao-dictionary-search-at-point+)
+  ;; 等宽: Source Code Pro 13 + STkaiti 16
+  (setq face-font-rescale-alist `(("STkaiti" . ,(/ 16.0 13))))
+
+  (set-face-attribute 'default nil :font "Source Code Pro-13")
+
+  (set-fontset-font t 'han      (font-spec :family "STkaiti"))
+  (set-fontset-font t 'cjk-misc (font-spec :family "STkaiti"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
