@@ -8,6 +8,9 @@ vnoremap <silent> <C-T> :<C-u>Ydv<CR>
 nnoremap <silent> <C-T> :<C-u>Ydc<CR>
 noremap <leader>yd : <C-u> Yde<CR>
 
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql,lua,nginx autocmd BufWritePre <buffer> if !exists('g:spf13_keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 let g:NERDTreeQuitOnOpen=0
 let g:NERDTreeWinSize=25
 
