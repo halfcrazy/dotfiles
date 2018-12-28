@@ -17,7 +17,9 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
+   '(ansible
+     rust
+     typescript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -28,6 +30,7 @@ values."
      better-defaults
      (imenu-list :variables
                  imenu-list-size 0.2)
+     helm
      semantic
      gtags
      deft
@@ -39,8 +42,6 @@ values."
               chinese-enable-youdao-dict t)
      markdown
      osx
-     (org :variables
-          org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -50,17 +51,16 @@ values."
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode
             c-c++-enable-clang-support t)
-     clojure
      go
      lua
      python
-     rust
      shell
      html
      yaml
      javascript
+     erlang
+     ;; elixir
      dash
-     ansible
      docker
      nginx
      tmux
@@ -70,7 +70,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(editorconfig)
+   dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -250,7 +250,7 @@ values."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
@@ -270,12 +270,13 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq create-lockfiles nil)
   (setq tramp-default-method "ssh")
   (setq tramp-copy-size-limit nil)
-(setq configuration-layer--elpa-archives
-  '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-    ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-    ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  (setq configuration-layer-elpa-archives
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -287,24 +288,8 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;(setq-default dotspacemacs-persistent-server t)
   (global-hl-line-mode)
-  (editorconfig-mode 1)
   (setq dotspacemacs-distinguish-gui-tab t)
-  (setq markdown-command "/usr/local/bin/pandoc -s --highlight-style pygments -c /Users/halfcrazy/personal/github-pandoc.css")
   (setq imenu-list-auto-resize nil)
-  (add-to-list 'dash-at-point-mode-alist '(lua-mode . "openresty,lua"))
-  (add-to-list 'dash-at-point-mode-alist '(nginx-mode . "openresty,nginx"))
-  (setq lua-indent-level 4)
-  (spacemacs|add-company-hook lua-mode)
-  (with-eval-after-load 'lua-mode
-    (spacemacs|defvar-company-backends lua-mode)
-    (require 'company-keywords)
-    (push '(lua-mode  "setmetatable" "local" "function" "and" "break" "do" "else" "elseif" "self" "resume" "yield"
-                      "end" "false" "for" "function" "goto" "if" "nil" "not" "or" "repeat" "return" "then" "true"
-                      "until" "while" "__index" "__newindex" "dofile" "getmetatable" "ipairs" "pairs" "print"
-                      "rawget" "status" "rawset" "select" "_M" "_G" "assert" "collectgarbage" "error" "pcall"
-                      "coroutine" "rawequal" "require" "load" "tostring" "tonumber" "xpcall" "gmatch" "gsub"
-                      "rep" "reverse" "sub" "upper" "concat" "pack" "insert" "remove" "unpack" "sort"
-                      "lower") company-keywords-alist))
   (evil-ex-define-cmd "Q" 'evil-quit)
   (evil-ex-define-cmd "E" 'evil-edit)
   (evil-ex-define-cmd "W" 'evil-write)
@@ -321,3 +306,23 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (pyvenv ggtags evil-surround evil-nerd-commenter evil-matchit editorconfig dumb-jump doom-modeline docker diff-hl deft counsel-projectile counsel ivy auto-compile ace-window company projectile helm helm-core magit git-commit markdown-mode rust-mode spaceline typescript-mode async zenburn-theme youdao-dictionary yasnippet-snippets yapfify yaml-mode xterm-color ws-butler writeroom-mode with-editor winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package unfill treepy toml-mode toc-org tide tagedit tablist symon swiper string-inflection stickyfunc-enhance srefactor spaceline-all-the-icons solarized-theme smeargle slim-mode shrink-path shell-pop scss-mode sass-mode reveal-in-osx-finder restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pytest pyim pyenv-mode py-isort pug-mode prettier-js powerline popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox pangu-spacing packed overseer osx-trash osx-dictionary org-plus-contrib org-bullets open-junk-file nginx-mode neotree nameless mwim multi-term move-text monokai-theme mmm-mode markdown-toc magit-svn magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode link-hint launchctl json-navigator json-mode js2-refactor js-doc jinja2-mode indent-guide importmagic impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag graphql google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flycheck-rust flycheck-rtags flycheck-pos-tip flx-ido find-by-pinyin-dired fill-column-indicator fasd fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-numbers evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav eldoc-eval dotenv-mode dockerfile-mode docker-tramp disaster diminish dash-at-point cython-mode company-web company-tern company-statistics company-rtags company-lua company-go company-c-headers company-ansible company-anaconda column-enforce-mode color-identifiers-mode clean-aindent-mode clang-format chinese-conv centered-cursor-mode cargo browse-at-remote auto-yasnippet auto-highlight-symbol ansible-doc ansible aggressive-indent ace-pinyin ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
